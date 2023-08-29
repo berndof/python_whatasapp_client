@@ -1,0 +1,9 @@
+2023/08/29-17:25:15.679 20ce5 Reusing MANIFEST /home/berndof/Workspace/Zapap/data/browser/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2023/08/29-17:25:15.680 20ce5 Recovering log #9
+2023/08/29-17:25:15.680 20ce5 Reusing old log /home/berndof/Workspace/Zapap/data/browser/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/000009.log 
+2023/08/29-17:25:17.470 20ce5 Compacting 1@0 + 1@1 files
+2023/08/29-17:25:17.527 20ce5 Generated table #12@0: 25393 keys, 523263 bytes
+2023/08/29-17:25:17.527 20ce5 Compacted 1@0 + 1@1 files => 523263 bytes
+2023/08/29-17:25:17.535 20ce5 compacted to: files[ 0 1 1 0 0 0 0 ]
+2023/08/29-17:25:17.535 20ce5 Delete type=2 #7
+2023/08/29-17:25:17.535 20ce5 Delete type=2 #10

@@ -19,10 +19,11 @@ class App(Session):
 if __name__ == "__main__":
     
     chrome_options = Options()
-    chrome_options.binary_location = '//usr//bin//google-chrome'
+    chrome_options.binary_location = '//usr//bin//google-chrome' 
     
-    #profile_path = "data//browser//"    
-    #chrome_options.add_argument(f"user-data-dir={profile_path}")
+    profile_path = "data//browser//"    
+    chrome_options.add_argument(f"user-data-dir={profile_path}")
+    
     chrome_options.add_argument("--lang=pt-BR")
 
     driver = webdriver.Chrome(options=chrome_options)

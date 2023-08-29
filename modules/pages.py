@@ -13,3 +13,7 @@ class Pages():
     @property
     def isMainPage(self) -> bool:
         return self.locator.main in self.driver.page_source
+    
+    @property
+    def isProfilePage(self):
+        return self.locator.profile in self.driver.page_source

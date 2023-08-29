@@ -1,4 +1,5 @@
 class Locator():
+    
     @property
     def login(self):
         return "Conectar com número de telefone"
@@ -6,3 +7,7 @@ class Locator():
     @property
     def main(self):
         return "Envie e receba mensagens sem precisar manter seu celular conectado à internet."
+    
+    @property
+    def profile(self):
+        return "Perfil"
