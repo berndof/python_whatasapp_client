@@ -66,7 +66,7 @@ class Elements():
         
         if len(list_resultElements) < 2:
             print("nenhum resultado")
-            input("a")
+            input("#erro nenhum resultado")
         else:
         #set start y position
             for element in list_resultElements:
@@ -84,3 +84,26 @@ class Elements():
     def message_box(self):
         try: return WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div[5]/div/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]')))
         except: return None
+        
+    @property
+    def ChatList(self):
+        current_chat_list = []
+        
+        chats_tab = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, '[aria-label="Lista de conversas"]')))
+
+
+        for chat_element in chats_tab.find_elements(By. XPATH, './*'):
+            
+            chat_title = utils.break_chat_text(chat_element.text)
+            
+            chat_object = Chat(chat_title, chat_element)
+            
+            current_chat_list.append(chat_object)
+        
+        return current_chat_list
+        
+
+class Chat():
+    def __init__(self, title, web_element):
+        self.title = title
+        self.web_element = web_element

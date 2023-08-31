@@ -78,27 +78,32 @@ class Profile():
         self.hello_world()
         
     def hello_world(self):
-        if self.search_and_click()[0]:
+        if self.interactor.searchByname_and_click(self.username)[0]:
             #AQUI
-            #TODO Checar em que chat estou 
-            # se o nome bate com o nome da pesquisa
             
-            # logica para enviar a mensagem
+            #TODO Checar se o nome do chat bate com o nome da pesquisa
+            
+            # [x] logica para enviar a mensagem 
             self.interactor.sendMessage_on_Chat(self.test_message)
                 
-                
+            #TODO verificar se a mensagem esta na conversa
             
-            # verificar se a mensagem esta na conversa
+            while not self.session.isMainPage:
+                self.interactor.returnMain()
+                sleep(0.1)
+            
+            
+            
+            #Achar meu chat na lista de chats
+
+            self.interactor.enterChat_on_ChatList(self.username)
+            input("caca")
+            
             # fixar meu contato
+        
+            
             # retornar
         
-    def search_and_click(self):
-        results = self.interactor.searchByName(name=self.username)
-        for result in results:
-            if result[0] == self.username:
-                result[1].click()
-                return True, result[0]
-            else: return False
         #self.photo_url:str = photo_url
         #self.chat_element:str = chat_element
         
