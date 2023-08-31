@@ -12,6 +12,9 @@ class App(Session):
             while True:
                 option = input ("Oque deseja: ")
                 
+                if option == "profile":
+                    print(self.my_profile.username, self.my_profile.phone)
+                
                 if option == "quit":
                     print("saindo")
                     break
