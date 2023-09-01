@@ -1,3 +1,3 @@
-2023/08/31-13:23:58.939 45112 Reusing MANIFEST /home/berndof/Workspace/Zapap/data/browser/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2023/08/31-13:23:58.939 45112 Recovering log #37
-2023/08/31-13:23:58.956 45112 Reusing old log /home/berndof/Workspace/Zapap/data/browser/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/000037.log 
+2023/08/31-15:09:41.235 23dd Reusing MANIFEST /home/berndof/Workspace/Zapap/data/browser/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2023/08/31-15:09:41.237 23dd Recovering log #37
+2023/08/31-15:09:41.325 23dd Reusing old log /home/berndof/Workspace/Zapap/data/browser/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/000037.log 

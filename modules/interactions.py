@@ -6,14 +6,17 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 from time import sleep
 
-class Interactor():
+class Interactor(Profile):
     def __init__ (self, driver):
         self.driver = driver
         self.elements = Elements(driver)
         self.pages = Pages(driver)
-        self.actions = ActionChains(self.driver)
+        self.action = ActionChains(self.driver)
         
-    def openProfile(self):
+        
+    ### PROFILE ########################################
+    # [X] Ready
+    def openProfile(self) -> bool:
         sleep(0.5)
         if self.elements.profile_div != None:
             self.elements.profile_div.click()
@@ -21,11 +24,13 @@ class Interactor():
         else:
             return False
     
+    # [X] Ready
     def closeProfile(self):
         while self.pages.isProfilePage:
             self.returnMain()
         return True
     
+    # [\] Ready for now, extrair mais dados perfil
     def extractProfileData(self):
         if self.pages.isProfilePage:
             
@@ -34,42 +39,51 @@ class Interactor():
             
             return my_username, my_phone
         else: return None
-        
+    ####################################################
+    
+    ### ACTIONS ########################################
+    # [X] Ready
     def returnMain(self):
-        try:
-            sleep(0.1)
-            self.actions.send_keys(Keys.ESCAPE)
-            self.actions.perform()
-        except: pass
+        while not self.pages.isMainPage:
+            try:
+                sleep(0.1)
+                self.actions.send_keys(Keys.ESCAPE)
+                self.actions.perform()
+            except: pass
+        return True
         
-    def searchByName(self, name):
+    ####################################################    
+        
+        
+    ### Search ######################################### 
+    
+    # [X] Ready 
+    def searchByTitle(self, chat_title):
         search_box = self.elements.search_box
         
         search_box.clear()
-        search_box.send_keys(name)
+        search_box.send_keys(chat_title)
         
         sleep(1)
         
         return self.elements.SearchResults
 
-    def searchByname_and_click(self, search_input:str ):
-        """_summary_
+    # [W] TODO 
+    def searchByTitle_then_click(self, chat_title ):
 
-        Args:
-            search_input (str): _description_
-
-        Returns:
-            (result_title, webelement)
-        """
-        results = self.searchByName(search_input)
-        for result in results:
-            if result[0] == search_input:
-                result[1].click()
-                return True, result
+        results = self.searchByName(chat_title)
+        
+        for title, element in results:
+            if title == chat_title:
+                element.click()
+                #confirmar que entrou no chat certo
+                return True
             else: return False
 
-    def sendMessage_on_Chat(self, message:str): #add parametro chat
+    # [W] TODO
+    def sendMessage(self, message:str): #add parametro chat
         #Checar se estou no chat certo
+        
         sleep(0.5)
         input_field = self.elements.message_box
 
@@ -89,8 +103,15 @@ class Interactor():
     def find_on_ChatList(self, chat_title:str): 
         for chat in self.elements.ChatList:
             if chat.title == chat_title:
-                return True, chat
-            else: return False, None
+                return chat
+            else: return None
+
+    # [x] Ready for now, adicionar confirmação de que entrou no chat certo antes de retornar
+    def enterChat(self, chat:Chat()):
+        try:
+            chat.element.click()
+            return True
+        except: return False
 
     def enterChat_on_ChatList(self, chat_title:str):
         exists, chat = self.find_on_ChatList(chat_title)
@@ -98,3 +119,17 @@ class Interactor():
             chat.element.click()
             return True
         else: return False
+    
+    def pinChat_on_ChatList(self, chat_title:str):
+        exists, chat = self.find_on_ChatList(chat_title)
+        if exists and chat.element.is_displayed() and not self.chat.isPinned:
+            #pin chat
+            return True
+        else: return False
+    
+    def pinChat(self, chat:Chat):
+        if not chat.isPinned:
+            self.actions.context_click(chat.element).perform()
+            
+            context_box = self.element
+    

@@ -21,6 +21,12 @@ class Elements():
         
     @property    
     def profile_div(self):
+        """find profile div on web page
+
+        Returns:
+            WebElement or None
+        """
+        
         try: 
             return self.driver.find_element(By.XPATH, '/html/body/div[1]/div/div/div[4]/header/div[1]/div')
         except: return None
@@ -104,6 +110,13 @@ class Elements():
         
 
 class Chat():
-    def __init__(self, title, web_element):
+    def __init__(self, title, element):
         self.title = title
-        self.web_element = web_element
+        self.element = element
+        
+    @property
+    def isPinned(self) -> bool:
+        try:
+            self.element.find_element(By.XPATH, './/*[@data-testid="pinned2"]')
+            return True
+        except: return False

@@ -4,7 +4,7 @@ from selenium.webdriver.chrome.options import Options
 from modules.utils import generate_qr
 
 from modules.pages import Pages
-from modules.elements import Elements
+from modules.elements import Elements, Chat
 from modules.interactions import Interactor
 
 from typing import Tuple
@@ -52,11 +52,13 @@ class Session(Elements, Pages):
             self.build_my_profile()
         return True
                 
+    # [X] Ready
     def waiting_scan(self) -> Tuple[str, bool]:
         if self.qr_data != self.actual_qr_data and self.actual_qr_data != '':
             return generate_qr(qr_data=self.qr_data)
         return self.qr_data
                 
+    
     def build_my_profile(self):
         if self.interactor.openProfile():
             my_username, my_phone = self.interactor.extractProfileData()
@@ -66,38 +68,43 @@ class Session(Elements, Pages):
             
             
 class Profile():
-    def __init__(self, session, username, phone):
+    def __init__(self, session, username, phone,):
         
-        self.username:str = username
-        self.phone:str = phone
         self.session = session
         self.interactor = self.session.interactor
         
-        self.test_message = "Hello, world"
+        self.username:str = username
         
         self.hello_world()
         
+        
+    #### Properties ###############################
+    @property        
+    def element(self):
+        self.element = self.interactor.find_on_ChatList(self.username)    
+        
+    ###############################################
+    
+    # [W] TODO
     def hello_world(self):
-        if self.interactor.searchByname_and_click(self.username)[0]:
+        if self.interactor.searchByTitle_then_click(self, self.username):
             #AQUI
             
-            #TODO Checar se o nome do chat bate com o nome da pesquisa
+            self.interactor.sendMessage("Hello, world!")
             
-            # [x] logica para enviar a mensagem 
-            self.interactor.sendMessage_on_Chat(self.test_message)
-                
-            #TODO verificar se a mensagem esta na conversa
+            #verificar se a mensagem esta na conversa
             
             while not self.session.isMainPage:
                 self.interactor.returnMain()
                 sleep(0.1)
-            
-            
+            return True
+    
+    def pinChat(self):
+        if self.element != None:
+            self.interactor.pinChat_on_ChatList(self.element)
             
             #Achar meu chat na lista de chats
 
-            self.interactor.enterChat_on_ChatList(self.username)
-            input("caca")
             
             # fixar meu contato
         
