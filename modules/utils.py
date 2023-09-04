@@ -52,7 +52,7 @@ def break_chat_text(chat_text:str):
     #if len(chat_data) > 3:
     #    unread_messages = chat_data[3]
     #else: unread_messages = '0' 
-     
+    #aaaaaaaaaaaaaaaaaaaaaaaaaaa
     #
     # TODO retornar chat_data e quebrar depois
     return (chat_title)
