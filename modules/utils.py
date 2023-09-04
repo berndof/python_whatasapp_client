@@ -2,12 +2,14 @@ import qrcode
 import os
 from time import sleep
 
+# [X] Ready
 def check_path(path:str):
     if not os.path.exists(path):
         os.makedirs(path)
         return True
     else: return True
 
+# [X] Ready
 def generate_qr(qr_data:str='', qr_path:str='data//session//', qr_filename:str='qr-code.png'):
     
     qr = qrcode.QRCode()
@@ -24,6 +26,7 @@ def generate_qr(qr_data:str='', qr_path:str='data//session//', qr_filename:str='
     
     return qr_data
 
+# [W] TODO add y_end (height of div "Mensagens") 
 def organize_search_results(list_resultElements, y_start):
     result_list = []      
     for element in list_resultElements:
@@ -34,10 +37,13 @@ def organize_search_results(list_resultElements, y_start):
             result_list.append((result_title, element))
     return result_list
 
+# [W] TODO
 def break_chat_text(chat_text:str):
     #TODO dar uma olhada nisso aqui
     chat_data = chat_text.split('\n') 
     chat_title = chat_data[0]
+    print(chat_data)
+    input("analise bobo")
     
     #last_message_time = chat_data[1]
     #last_message = chat_data[2]
@@ -47,4 +53,6 @@ def break_chat_text(chat_text:str):
     #    unread_messages = chat_data[3]
     #else: unread_messages = '0' 
      
+    #
+    # TODO retornar chat_data e quebrar depois
     return (chat_title)

@@ -1,12 +1,18 @@
 from modules.elements import Elements, Chat
 from modules.pages import Pages
 
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 
 from time import sleep
 
-class Interactor(Profile):
+from typing import Union
+
+class Interactor():
     def __init__ (self, driver):
         self.driver = driver
         self.elements = Elements(driver)
@@ -27,7 +33,11 @@ class Interactor(Profile):
     # [X] Ready
     def closeProfile(self):
         while self.pages.isProfilePage:
-            self.returnMain()
+            try:
+                sleep(0.1)
+                self.action.send_keys(Keys.ESCAPE)
+                self.action.perform()
+            except: pass
         return True
     
     # [\] Ready for now, extrair mais dados perfil
@@ -41,14 +51,14 @@ class Interactor(Profile):
         else: return None
     ####################################################
     
-    ### ACTIONS ########################################
+    ### Pages Navigation ###############################
     # [X] Ready
     def returnMain(self):
         while not self.pages.isMainPage:
             try:
                 sleep(0.1)
-                self.actions.send_keys(Keys.ESCAPE)
-                self.actions.perform()
+                self.action.send_keys(Keys.ESCAPE)
+                self.action.perform()
             except: pass
         return True
         
@@ -58,7 +68,7 @@ class Interactor(Profile):
     ### Search ######################################### 
     
     # [X] Ready 
-    def searchByTitle(self, chat_title):
+    def searchByTitle(self, chat_title:str):
         search_box = self.elements.search_box
         
         search_box.clear()
@@ -69,9 +79,9 @@ class Interactor(Profile):
         return self.elements.SearchResults
 
     # [W] TODO 
-    def searchByTitle_then_click(self, chat_title ):
+    def searchByTitle_then_click(self, chat_title:str):
 
-        results = self.searchByName(chat_title)
+        results = self.searchByTitle(chat_title)
         
         for title, element in results:
             if title == chat_title:
@@ -79,6 +89,17 @@ class Interactor(Profile):
                 #confirmar que entrou no chat certo
                 return True
             else: return False
+
+    # [X] Ready
+    def searchByTitle_on_chatList(self, chat_title:str) -> Union[Chat, None]:
+        for chat in self.elements.chatList:
+            if chat.title == chat_title:
+                return chat
+            else: return None
+
+    ####################################################    
+    
+    ### Chat Actions ###################################
 
     # [W] TODO
     def sendMessage(self, message:str): #add parametro chat
@@ -100,14 +121,26 @@ class Interactor(Profile):
         finally:
             input_field.send_keys(Keys.RETURN)
 
-    def find_on_ChatList(self, chat_title:str): 
-        for chat in self.elements.ChatList:
-            if chat.title == chat_title:
-                return chat
-            else: return None
+    # [X] Ready
+    def pinChat(self, chat:Chat) -> bool:
+        if not chat.isPinned:
+            self.action.context_click(chat.element).perform()
+            sleep(1)
+            
+            context_box = WebDriverWait(self.driver, 1).until(EC.presence_of_element_located((By.CSS_SELECTOR, '[class="_3bcLp"]')))
+        
+            sleep(0.5)
+            pin_btn = context_box.find_element(By.XPATH, './/*[@aria-label="Fixar conversa"]')
+            pin_btn.click()
+            return True
+        else: return True
 
+
+    #@@@@@@ All above is testing
+    
+    
     # [x] Ready for now, adicionar confirmação de que entrou no chat certo antes de retornar
-    def enterChat(self, chat:Chat()):
+    def enterChat(self, chat:Chat):
         try:
             chat.element.click()
             return True
@@ -127,9 +160,4 @@ class Interactor(Profile):
             return True
         else: return False
     
-    def pinChat(self, chat:Chat):
-        if not chat.isPinned:
-            self.actions.context_click(chat.element).perform()
-            
-            context_box = self.element
     

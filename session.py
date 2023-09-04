@@ -5,9 +5,10 @@ from modules.utils import generate_qr
 
 from modules.pages import Pages
 from modules.elements import Elements, Chat
+#from bot import Bot
 from modules.interactions import Interactor
 
-from typing import Tuple
+from typing import Tuple, List, Union
 
 from time import sleep
 
@@ -19,6 +20,8 @@ class Session(Elements, Pages):
         
         self.driver = driver
         
+        #self.bot = Bot
+        
         self.interactor = Interactor(self.driver)    
         #self.elements = Elements(self.driver)
         #self.pages = Pages(self.driver)
@@ -28,6 +31,7 @@ class Session(Elements, Pages):
         self.actual_qr_data:str = ''
         
         self.my_profile:Profile
+    
         
     def start(self) -> bool:
         """Inicia a sessão
@@ -74,35 +78,40 @@ class Profile():
         self.interactor = self.session.interactor
         
         self.username:str = username
+        self.phone:str = phone
         
         self.hello_world()
-        
+        self.pinMyChat()
         
     #### Properties ###############################
     @property        
-    def element(self):
-        self.element = self.interactor.find_on_ChatList(self.username)    
+    def webElement(self):
+        return self.interactor.searchByTitle_on_chatList(self.username)
         
     ###############################################
     
+    #### Actions ##################################
+    
     # [W] TODO
     def hello_world(self):
-        if self.interactor.searchByTitle_then_click(self, self.username):
+        if self.interactor.searchByTitle_then_click(self.username):
             #AQUI
             
             self.interactor.sendMessage("Hello, world!")
             
             #verificar se a mensagem esta na conversa
             
-            while not self.session.isMainPage:
-                self.interactor.returnMain()
-                sleep(0.1)
+            
+            self.interactor.returnMain()
             return True
     
-    def pinChat(self):
-        if self.element != None:
-            self.interactor.pinChat_on_ChatList(self.element)
-            
+    def pinMyChat(self):
+        if self.webElement != None:
+            self.interactor.pinChat(self.webElement)
+            return True
+        else:
+            input("vai tratar exceção burro!")
+        
             #Achar meu chat na lista de chats
 
             
