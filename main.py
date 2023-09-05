@@ -38,8 +38,15 @@ class App(Session):
                     print(self.a)
                     continue
                     
-                if option == "teste":
+                if option == "teste1":
                     self.check_new_chat()
+                    print(self.queue)
+                    continue               
+                
+                if option == "teste2":
+                    self.answer_queue()
+                    continue     
+                
                 
                 if option == "quit":
                     self.stop_checking_messages = True

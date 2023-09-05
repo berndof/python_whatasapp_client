@@ -55,8 +55,10 @@ class Session(Elements, Pages):
         
         if not self.isProfilePage:
             self.build_my_profile()
-            self.current_chat_list = self.check_new_chat()
-            input("cabo")
+        
+        # [W] Depois de buildar o meu perfil, vou fazer a primeira checagem dos chats
+        self.current_chat_list = self.chatList
+        
         return True
                 
     # [X] Ready
@@ -72,23 +74,25 @@ class Session(Elements, Pages):
             self.interactor.closeProfile()
         self.my_profile = Profile(self, my_username, my_phone)
         return True
-            
+        
+    # [X] Ready
     def check_new_chat(self):
-        current = []
-        for chat in self.current_chat_list:
-            current.append(chat.title)
+        queue = []
+        for chat in self.chatList:
+            if chat.unreadCounter > 0:
+                #print(chat.title, chat.lastMessage)
+                queue.append(chat)
+        self.queue = queue
+        if len(self.queue) > 0:
+            return True, len(self.queue)
+        else: return False, 0
+        
+    def answer_queue(self):
+        self.interactor.automatic_answer(self.queue)
+        input("saiu")
+        return
+    
 
-        new = []
-        for newChat in self.chatList:
-            new.append(newChat.title)
-            
-        print(f"atual: {current}")
-        print(f"nova {new}")
-        input("otario")
-        
-        return self.chatList
-        
-            
 class Profile():
     def __init__(self, session, username, phone,):
         
@@ -124,8 +128,10 @@ class Profile():
             return True
     
     def pinMyChat(self):
-        if self.webElement != None:
-            self.interactor.pinChat(self.webElement)
+        if self.webElement != None: 
+            try:
+                self.interactor.pinChat(self.webElement)
+            except: pass
             return True
         else:
             input("vai tratar exceção burro!")

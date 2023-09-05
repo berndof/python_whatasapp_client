@@ -42,8 +42,8 @@ def break_chat_text(chat_text:str):
     #TODO dar uma olhada nisso aqui
     chat_data = chat_text.split('\n') 
     chat_title = chat_data[0]
-    print(chat_data)
-    input("analise bobo")
+    #print(chat_data)
+    #input("analise bobo")
     
     #last_message_time = chat_data[1]
     #last_message = chat_data[2]
