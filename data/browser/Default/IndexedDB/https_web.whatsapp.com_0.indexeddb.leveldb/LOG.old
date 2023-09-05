@@ -1,12 +1,3 @@
-2023/09/03-23:45:04.678 fb2a Reusing MANIFEST /mnt/Arquivos/Workspace/Zapap/data/browser/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2023/09/03-23:45:04.679 fb2a Recovering log #45
-2023/09/03-23:45:04.731 fb2a Reusing old log /mnt/Arquivos/Workspace/Zapap/data/browser/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/000045.log 
-2023/09/03-23:45:07.855 fb2b Level-0 table #50: started
-2023/09/03-23:45:07.936 fb2b Level-0 table #50: 1150432 bytes OK
-2023/09/03-23:45:07.978 fb2b Delete type=0 #45
-2023/09/03-23:45:09.000 fb2b Compacting 1@1 + 1@2 files
-2023/09/03-23:45:09.150 fb2b Generated table #51@1: 54417 keys, 1609102 bytes
-2023/09/03-23:45:09.151 fb2b Compacted 1@1 + 1@2 files => 1609102 bytes
-2023/09/03-23:45:09.190 fb2b compacted to: files[ 0 0 1 0 0 0 0 ]
-2023/09/03-23:45:09.190 fb2b Delete type=2 #47
-2023/09/03-23:45:09.190 fb2b Delete type=2 #50
+2023/09/05-10:30:44.224 1fae Reusing MANIFEST /home/berndof/Workspace/Zapap/data/browser/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2023/09/05-10:30:44.224 1fae Recovering log #49
+2023/09/05-10:30:44.319 1fae Reusing old log /home/berndof/Workspace/Zapap/data/browser/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/000049.log 

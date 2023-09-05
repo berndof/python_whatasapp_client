@@ -29,6 +29,7 @@ class Session(Elements, Pages):
     
         
         self.actual_qr_data:str = ''
+        self.current_chat_list = []
         
         self.my_profile:Profile
     
@@ -54,6 +55,8 @@ class Session(Elements, Pages):
         
         if not self.isProfilePage:
             self.build_my_profile()
+            self.current_chat_list = self.check_new_chat()
+            input("cabo")
         return True
                 
     # [X] Ready
@@ -62,7 +65,7 @@ class Session(Elements, Pages):
             return generate_qr(qr_data=self.qr_data)
         return self.qr_data
                 
-    
+    # [X] Ready
     def build_my_profile(self):
         if self.interactor.openProfile():
             my_username, my_phone = self.interactor.extractProfileData()
@@ -70,6 +73,21 @@ class Session(Elements, Pages):
         self.my_profile = Profile(self, my_username, my_phone)
         return True
             
+    def check_new_chat(self):
+        current = []
+        for chat in self.current_chat_list:
+            current.append(chat.title)
+
+        new = []
+        for newChat in self.chatList:
+            new.append(newChat.title)
+            
+        print(f"atual: {current}")
+        print(f"nova {new}")
+        input("otario")
+        
+        return self.chatList
+        
             
 class Profile():
     def __init__(self, session, username, phone,):
