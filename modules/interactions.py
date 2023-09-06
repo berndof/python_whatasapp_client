@@ -61,6 +61,11 @@ class Interactor():
                 self.action.perform()
             except: pass
         return True
+    
+    def closeChat(self):
+        sleep(0.1)
+        self.action.send_keys(Keys.ESCAPE)
+        self.action.perform()
         
     ####################################################    
         
@@ -138,13 +143,26 @@ class Interactor():
 
     #@@@@@@ All above is testing
     
-    
+    #TODO chamar o bot?
+    def automatic_answer(self, queue):
+        message = "Aguarde o técnico"
+        for chat in queue:
+            if self.enterChat(chat):
+                sleep(1)
+                self.sendMessage(message)
+                sleep(1)
+                self.closeChat()
+            else: input("não entrou")
+            
+    ################################################
+            
     # [x] Ready for now, adicionar confirmação de que entrou no chat certo antes de retornar
     def enterChat(self, chat:Chat):
         try:
             chat.element.click()
             return True
         except: return False
+    ############
 
     def enterChat_on_ChatList(self, chat_title:str):
         exists, chat = self.find_on_ChatList(chat_title)

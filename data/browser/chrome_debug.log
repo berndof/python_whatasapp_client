@@ -1,57 +1,48 @@
-[65805:65805:0903/235416.760544:WARNING:chrome_main_delegate.cc(596)] This is Chrome version 116.0.5845.140 (not a warning)
-[65805:65805:0903/235416.919523:INFO:chrome_browser_cloud_management_controller.cc(168)] Starting CBCM Controller Initialization
-[65805:65805:0903/235416.919568:INFO:chrome_browser_cloud_management_controller.cc(196)] No machine level policy manager exists.
-[65805:65805:0903/235417.014163:WARNING:bluez_dbus_manager.cc(247)] Floss manager not present, cannot set Floss enable/disable.
-[65851:65851:0903/235417.079848:WARNING:sandbox_linux.cc(393)] InitializeSandbox() called with multiple threads in process gpu-process.
-[65851:65851:0903/235417.152962:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
-[65851:65851:0903/235417.243120:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
-[65851:65851:0903/235417.247175:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
-[65851:65851:0903/235417.248825:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
-[65851:65851:0903/235417.250446:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
-[65851:65851:0903/235417.252079:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
-[65851:65851:0903/235417.270200:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
-[65851:65851:0903/235417.271975:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
-[65851:65851:0903/235417.274644:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
-[65851:65851:0903/235417.276735:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
-[65851:65851:0903/235417.278898:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
-[65851:65851:0903/235417.280756:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
-[65851:65851:0903/235417.283710:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
-[65851:65851:0903/235417.294395:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
-[65851:65851:0903/235417.296587:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
-[65851:65851:0903/235417.298378:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
-[65851:65851:0903/235417.300096:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
-[65851:65851:0903/235417.321702:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
-[65851:65851:0903/235417.324309:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
-[65851:65851:0903/235417.335980:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
-[65851:65851:0903/235417.572110:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
-[65851:65851:0903/235417.573998:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
-[65805:65805:0903/235417.614036:INFO:CONSOLE(0)] "Error with Permissions-Policy header: Unrecognized feature: 'ambient-light-sensor'.", source:  (0)
-[65805:65805:0903/235417.614146:INFO:CONSOLE(0)] "Error with Permissions-Policy header: Unrecognized feature: 'bluetooth'.", source:  (0)
-[65851:65851:0903/235417.718138:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
-[65851:65851:0903/235420.986651:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
-[65851:65851:0903/235420.990569:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
-[65851:65851:0903/235420.992561:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
-[65851:65851:0903/235420.995753:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
-[65851:65851:0903/235420.996764:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
-[65851:65851:0903/235420.999381:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
-[65851:65851:0903/235421.000668:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
-[65851:65851:0903/235421.003559:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
-[65851:65851:0903/235421.009082:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
-[65851:65851:0903/235421.013557:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
-[65851:65851:0903/235421.015812:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
-[65851:65851:0903/235421.026003:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
-[65851:65851:0903/235421.202667:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
-[65851:65851:0903/235421.208333:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
-[65851:65851:0903/235421.216655:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
-[65851:65851:0903/235421.218304:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
-[65851:65851:0903/235421.271846:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
-[65851:65851:0903/235421.287840:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
-[65851:65851:0903/235421.672505:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
-[65851:65851:0903/235421.674412:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
-[65851:65851:0903/235421.677161:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
-[65851:65851:0903/235421.685982:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
-[65851:65851:0903/235422.253608:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
-[65851:65851:0903/235422.688194:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
-[65852:65873:0903/235428.988550:WARNING:sqlite_persistent_store_backend_base.cc(194)] Failed to post task from FlushAndNotifyInBackground@net/extras/sqlite/sqlite_persistent_store_backend_base.cc:242 to client_task_runner_.
-[65852:65873:0903/235428.988689:WARNING:sqlite_persistent_store_backend_base.cc(194)] Failed to post task from FlushAndNotifyInBackground@net/extras/sqlite/sqlite_persistent_store_backend_base.cc:242 to client_task_runner_.
-[65805:65805:0903/235429.034501:WARNING:pref_notifier_impl.cc(41)] Pref observer for media_router.cast_allow_all_ips found at shutdown.
+[27846:27846:0905/152058.639322:WARNING:chrome_main_delegate.cc(596)] This is Chrome version 116.0.5845.140 (not a warning)
+[27846:27846:0905/152058.903687:INFO:chrome_browser_cloud_management_controller.cc(168)] Starting CBCM Controller Initialization
+[27846:27846:0905/152058.903893:INFO:chrome_browser_cloud_management_controller.cc(196)] No machine level policy manager exists.
+[27846:27846:0905/152059.118203:WARNING:bluez_dbus_manager.cc(247)] Floss manager not present, cannot set Floss enable/disable.
+[27903:27903:0905/152059.142283:WARNING:sandbox_linux.cc(393)] InitializeSandbox() called with multiple threads in process gpu-process.
+[27903:27903:0905/152059.159397:ERROR:gbm_wrapper.cc(253)] Failed to export buffer to dma_buf: Arquivo ou diretório inexistente (2)
+[27903:27903:0905/152059.159942:ERROR:gbm_wrapper.cc(253)] Failed to export buffer to dma_buf: Arquivo ou diretório inexistente (2)
+[27903:27903:0905/152059.160213:ERROR:gbm_wrapper.cc(253)] Failed to export buffer to dma_buf: Arquivo ou diretório inexistente (2)
+[27903:27903:0905/152059.160497:ERROR:gbm_wrapper.cc(253)] Failed to export buffer to dma_buf: Arquivo ou diretório inexistente (2)
+[27903:27903:0905/152059.160685:ERROR:gbm_wrapper.cc(253)] Failed to export buffer to dma_buf: Arquivo ou diretório inexistente (2)
+[27903:27903:0905/152059.160912:ERROR:gbm_wrapper.cc(253)] Failed to export buffer to dma_buf: Arquivo ou diretório inexistente (2)
+[27903:27903:0905/152059.161135:ERROR:gbm_wrapper.cc(253)] Failed to export buffer to dma_buf: Arquivo ou diretório inexistente (2)
+[27903:27903:0905/152059.161321:ERROR:gbm_wrapper.cc(253)] Failed to export buffer to dma_buf: Arquivo ou diretório inexistente (2)
+[27903:27903:0905/152059.161543:ERROR:gbm_wrapper.cc(253)] Failed to export buffer to dma_buf: Arquivo ou diretório inexistente (2)
+[27903:27903:0905/152059.161730:ERROR:gbm_wrapper.cc(253)] Failed to export buffer to dma_buf: Arquivo ou diretório inexistente (2)
+[27903:27903:0905/152059.161913:ERROR:gbm_wrapper.cc(253)] Failed to export buffer to dma_buf: Arquivo ou diretório inexistente (2)
+[27903:27903:0905/152059.162147:ERROR:gbm_wrapper.cc(253)] Failed to export buffer to dma_buf: Arquivo ou diretório inexistente (2)
+[27903:27903:0905/152059.162439:ERROR:gbm_wrapper.cc(253)] Failed to export buffer to dma_buf: Arquivo ou diretório inexistente (2)
+[27903:27903:0905/152059.162668:ERROR:gbm_wrapper.cc(253)] Failed to export buffer to dma_buf: Arquivo ou diretório inexistente (2)
+[27903:27903:0905/152059.162916:ERROR:gbm_wrapper.cc(253)] Failed to export buffer to dma_buf: Arquivo ou diretório inexistente (2)
+[27903:27903:0905/152059.163163:ERROR:gbm_wrapper.cc(253)] Failed to export buffer to dma_buf: Arquivo ou diretório inexistente (2)
+[27903:27903:0905/152059.163385:ERROR:gbm_wrapper.cc(253)] Failed to export buffer to dma_buf: Arquivo ou diretório inexistente (2)
+[27903:27903:0905/152059.163632:ERROR:gbm_wrapper.cc(253)] Failed to export buffer to dma_buf: Arquivo ou diretório inexistente (2)
+[27903:27903:0905/152059.163761:ERROR:gbm_wrapper.cc(253)] Failed to export buffer to dma_buf: Arquivo ou diretório inexistente (2)
+[27903:27903:0905/152059.163866:ERROR:gbm_wrapper.cc(253)] Failed to export buffer to dma_buf: Arquivo ou diretório inexistente (2)
+[27903:27903:0905/152059.163966:ERROR:gbm_wrapper.cc(253)] Failed to export buffer to dma_buf: Arquivo ou diretório inexistente (2)
+[27903:27903:0905/152059.164071:ERROR:gbm_wrapper.cc(253)] Failed to export buffer to dma_buf: Arquivo ou diretório inexistente (2)
+[27903:27903:0905/152059.164247:ERROR:gbm_wrapper.cc(253)] Failed to export buffer to dma_buf: Arquivo ou diretório inexistente (2)
+[27903:27903:0905/152059.164375:ERROR:gbm_wrapper.cc(253)] Failed to export buffer to dma_buf: Arquivo ou diretório inexistente (2)
+[27903:27903:0905/152059.164488:ERROR:gbm_wrapper.cc(253)] Failed to export buffer to dma_buf: Arquivo ou diretório inexistente (2)
+[27903:27903:0905/152059.164587:ERROR:gbm_wrapper.cc(253)] Failed to export buffer to dma_buf: Arquivo ou diretório inexistente (2)
+[27903:27903:0905/152059.164880:ERROR:gbm_wrapper.cc(253)] Failed to export buffer to dma_buf: Arquivo ou diretório inexistente (2)
+[27903:27903:0905/152059.164981:ERROR:gbm_wrapper.cc(253)] Failed to export buffer to dma_buf: Arquivo ou diretório inexistente (2)
+[27903:27903:0905/152059.165677:ERROR:gbm_wrapper.cc(253)] Failed to export buffer to dma_buf: Arquivo ou diretório inexistente (2)
+[27903:27903:0905/152059.166198:ERROR:gbm_wrapper.cc(253)] Failed to export buffer to dma_buf: Arquivo ou diretório inexistente (2)
+[27903:27903:0905/152059.167679:ERROR:gbm_wrapper.cc(253)] Failed to export buffer to dma_buf: Arquivo ou diretório inexistente (2)
+[27903:27903:0905/152059.167981:ERROR:gbm_wrapper.cc(253)] Failed to export buffer to dma_buf: Arquivo ou diretório inexistente (2)
+[27903:27903:0905/152059.168173:ERROR:gbm_wrapper.cc(253)] Failed to export buffer to dma_buf: Arquivo ou diretório inexistente (2)
+[27903:27903:0905/152059.168358:ERROR:gbm_wrapper.cc(253)] Failed to export buffer to dma_buf: Arquivo ou diretório inexistente (2)
+[27903:27903:0905/152059.168625:ERROR:gbm_wrapper.cc(253)] Failed to export buffer to dma_buf: Arquivo ou diretório inexistente (2)
+[27903:27903:0905/152059.168813:ERROR:gbm_wrapper.cc(253)] Failed to export buffer to dma_buf: Arquivo ou diretório inexistente (2)
+[27903:27903:0905/152059.168992:ERROR:gbm_wrapper.cc(253)] Failed to export buffer to dma_buf: Arquivo ou diretório inexistente (2)
+[27903:27903:0905/152059.169186:ERROR:gbm_wrapper.cc(253)] Failed to export buffer to dma_buf: Arquivo ou diretório inexistente (2)
+[27903:27903:0905/152059.169373:ERROR:gbm_wrapper.cc(253)] Failed to export buffer to dma_buf: Arquivo ou diretório inexistente (2)
+[27903:27903:0905/152059.169562:ERROR:gbm_wrapper.cc(253)] Failed to export buffer to dma_buf: Arquivo ou diretório inexistente (2)
+[27846:27846:0905/152100.106841:INFO:CONSOLE(0)] "Error with Permissions-Policy header: Unrecognized feature: 'ambient-light-sensor'.", source:  (0)
+[27846:27846:0905/152100.107647:INFO:CONSOLE(0)] "Error with Permissions-Policy header: Unrecognized feature: 'bluetooth'.", source:  (0)
+[27846:27846:0905/152510.695035:WARNING:pref_notifier_impl.cc(41)] Pref observer for media_router.cast_allow_all_ips found at shutdown.

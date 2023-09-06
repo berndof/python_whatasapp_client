@@ -13,8 +13,14 @@ from time import sleep
 from typing import List
 
 class Chat():
-    def __init__(self, title, element):
+    def __init__(self, title, time_lastMessage, lastMessage, unreadCounter,  element):
         self.title = title
+        
+        self.time_lastMessage = time_lastMessage
+        #TODO maybe sla
+        
+        self.lastMessage = lastMessage
+        self.unreadCounter = int(unreadCounter)
         self.element = element
         
     # [X] Ready
@@ -97,21 +103,33 @@ class Elements():
         try: return WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div[5]/div/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]')))
         except: return None
 
-    # [W] TODO verificar funcionamento geral
+    # [W] TODO
     @property
     def chatList(self) -> List[Chat]:
         current_chat_list = []
         
         chat_tab = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, '[aria-label="Lista de conversas"]')))
 
-
         for chat_element in chat_tab.find_elements(By. XPATH, './*'):
             
-            chat_title = utils.break_chat_text(chat_element.text)
+            if chat_element.text.split('\n')[0] == "Ditec": #TODO SABE QUE ISSO TA ERRA NÉ?
+                #meu chat
+                #return self.myChat
+                
+                #chat_title, x, time_lastMessage, lastMessage  =     #chat_element.text.split('\n')
+                #chat_object = Chat(chat_title, time_lastMessage, #lastMessage, "0", chat_element)
+                pass
+                
+            else:
+                if len(chat_element.text.split('\n')) == 3:
+                    chat_title, time_lastMessage, lastMessage = chat_element.text.split('\n')
+                    chat_object = Chat(chat_title, time_lastMessage, lastMessage, 0, chat_element)
+                
+                else: 
+                    chat_title, time_lastMessage, lastMessage, unreadCounter = chat_element.text.split('\n')
+                    chat_object = Chat(chat_title, time_lastMessage, lastMessage, unreadCounter, chat_element)
             
-            chat_object = Chat(chat_title, chat_element)
             
-            current_chat_list.append(chat_object)
+                current_chat_list.append(chat_object)
         
         return current_chat_list
-        

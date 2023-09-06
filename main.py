@@ -36,8 +36,17 @@ class App(Session):
                     
                 if option == "lista":
                     print(self.a)
-                    
                     continue
+                    
+                if option == "teste1":
+                    self.check_new_chat()
+                    print(self.queue)
+                    continue               
+                
+                if option == "teste2":
+                    self.answer_queue()
+                    continue     
+                
                 
                 if option == "quit":
                     self.stop_checking_messages = True
@@ -45,7 +54,7 @@ class App(Session):
                     break
                 
     def check_new_messages(self):
-        self.a = []
+        self.a = 0
         
         while not self.stop_checking_messages:  # Continue executando enquanto a variável não for True
             # Coloque aqui a lógica para verificar novas mensagens
@@ -55,6 +64,7 @@ class App(Session):
             sleep(1)  # Aguarde um segundo entre as verificações
         pass
 
+        
 if __name__ == "__main__":
     
     chrome_options = Options()
