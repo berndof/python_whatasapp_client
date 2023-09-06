@@ -5,7 +5,6 @@ from modules.utils import generate_qr
 
 from modules.pages import Pages
 from modules.elements import Elements, Chat
-#from bot import Bot
 from modules.interactions import Interactor
 
 from typing import Tuple, List, Union
@@ -26,14 +25,12 @@ class Session(Elements, Pages):
         #self.elements = Elements(self.driver)
         #self.pages = Pages(self.driver)
         
-    
-        
         self.actual_qr_data:str = ''
         self.current_chat_list = []
         
         self.my_profile:Profile
     
-        
+    # [XW] Almost Ready but working on
     def start(self) -> bool:
         """Inicia a sessão
 
@@ -48,32 +45,36 @@ class Session(Elements, Pages):
                 is_auth = True
                 break
             if self.isLoginPage:
-                self.actual_qr_data = self.waiting_scan()
+                self.actual_qr_data = self._update_qr_data()
                 continue
             else:
                 continue
         
-        #if not self.isProfilePage:
+        #TODO if not self.isProfilePage:
         self.build_my_profile()
         
-        # [W] Depois de buildar o meu perfil, vou fazer a primeira checagem dos chats
+        # [X] Depois de buildar o meu perfil, vou fazer a primeira checagem dos chats
         self.current_chat_list = self.chatList
         
         return True
                 
     # [X] Ready
-    def waiting_scan(self) -> Tuple[str, bool]:
+    def _update_qr_data(self) -> str:
         if self.qr_data != self.actual_qr_data and self.actual_qr_data != '':
             return generate_qr(qr_data=self.qr_data)
         return self.qr_data
                 
     # [X] Ready
-    def build_my_profile(self):
-        if self.interactor.openProfile():
-            my_username, my_phone = self.interactor.extractProfileData()
-            self.interactor.closeProfile()
+    def _build_my_profile(self):
+        if self.interactor.profile.openProfile():
+            my_username, my_phone = self.interactor.profile.extractProfileData()
+            self.interactor.profile.closeProfile()
         self.my_profile = Profile(self, my_username, my_phone)
         return True
+    
+    def _set_technicians(self):
+        
+        pass
         
     
 

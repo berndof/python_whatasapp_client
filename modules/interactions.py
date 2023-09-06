@@ -10,18 +10,13 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 from time import sleep
 
-from typing import Union
+from typing import Union, Tuple
 
-class Interactor():
-    def __init__ (self, driver):
-        self.driver = driver
-        self.elements = Elements(driver)
-        self.pages = Pages(driver)
-        self.action = ActionChains(self.driver)
+class Profile():
+    def __init__(self):
+        super().__init__()
         
-        
-    ### PROFILE ########################################
-    # [X] Ready
+        # [X] Ready
     def openProfile(self) -> bool:
         sleep(0.5)
         if self.elements.profile_div != None:
@@ -31,17 +26,18 @@ class Interactor():
             return False
     
     # [X] Ready
-    def closeProfile(self):
+    def closeProfile(self) -> bool:
         while self.pages.isProfilePage:
-            try:
-                sleep(0.1)
-                self.action.send_keys(Keys.ESCAPE)
-                self.action.perform()
-            except: pass
+            self.action.send_keys(Keys.ESCAPE)
+            self.action.perform()
         return True
     
-    # [\] Ready for now, extrair mais dados perfil
-    def extractProfileData(self):
+    # [XW] Ready for now, extrair mais dados perfil
+    def extractProfileData(self) -> Tuple[str, str]:
+        """
+        Returns:
+            Tuple[my_username:str, my_phone:str]
+        """            
         if self.pages.isProfilePage:
             
             my_username = self.elements.username
@@ -49,6 +45,17 @@ class Interactor():
             
             return my_username, my_phone
         else: return None
+
+class Interactor():
+    def __init__ (self, driver):
+        self.driver = driver
+        self.elements = Elements(driver)
+        self.pages = Pages(driver)
+        self.action = ActionChains(self.driver)
+        
+        self.profile = Profile()
+        
+
     ####################################################
     
     ### Pages Navigation ###############################
@@ -62,7 +69,7 @@ class Interactor():
             except: pass
         return True
     
-    def closeChat(self):
+    def exitChat(self):
         sleep(0.1)
         self.action.send_keys(Keys.ESCAPE)
         self.action.perform()
@@ -176,5 +183,4 @@ class Interactor():
             #pin chat
             return True
         else: return False
-    
     

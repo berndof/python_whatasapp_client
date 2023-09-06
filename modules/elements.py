@@ -13,7 +13,7 @@ from time import sleep
 from typing import List
 
 class Chat():
-    def __init__(self, title, time_lastMessage, lastMessage, unreadCounter,  element):
+    def __init__(self, title, time_lastMessage, lastMessage, unreadCounter, element):
         self.title = title
         
         self.time_lastMessage = time_lastMessage
@@ -23,6 +23,8 @@ class Chat():
         self.unreadCounter = int(unreadCounter)
         self.element = element
         
+        self.queue = None
+        
     # [X] Ready
     @property
     def isPinned(self) -> bool:
@@ -30,6 +32,31 @@ class Chat():
             self.element.find_element(By.XPATH, './/*[@data-icon="pinned2"]')
             return True 
         except: return False
+        
+    # [X] Ready
+    @property
+    def inQueue(self) -> Tuple[bool, Union(str, None)]:
+        """
+        Returns:
+            inQueue:bool, Queue:str
+        """
+        if self.queue != None:
+            return True, self.queue
+        else: return False, self.queue
+    
+    @property
+    def waitingQueue(self) -> bool:
+        if self.queue == None:
+            return True
+        else: return False
+    
+    def addQueue(self, queue):
+        if self.waitingQueue:
+            self.queue = queue
+        
+    def removeQueue(self):
+        self.queue = None
+    
 
 class Elements():
     def __init__(self,driver):

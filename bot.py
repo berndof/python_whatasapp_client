@@ -11,15 +11,12 @@ class Gary():
         self.queue:List = []
 
     def start(self):
-        
-        
         while True:
-            temMensagem, comprimento = self.MessageWatcher()
-            sleep(1)
-            if temMensagem:
-                aEncaminhar = self.answer_queue()
-                sleep(0.5)
-                self.encaminhar()
+            self.queueMonitor()
+            
+            if self.messageMonitor():
+                self.answerQueue()
+                
             
             
     def encaminhar(self):
@@ -33,19 +30,34 @@ class Gary():
 
         self.interactor.returnMain()
                 
-    def answer_queue(self):
-        self.interactor.automatic_answer(self.queue)
+    def answerQueue(self):
+        queue_message = """
+        Você entrou em contato com Serviço de Atendimento ao Cliente da Ditec\nDigite um número para escolher uma fila:\n1 - Manutenção
+        """
+        
+        for chat in self.queue:
+            if chat.title != "Ditec" and chat.title != "Tecnico" and chat.unreadCounter > 0:
+                self.interactor.enterChat(chat)
+                self.interactor.sendMessage(queue_message)
+                sleep(5) # TODO espera cinco segundos e checa se o usuário já respondeu, se não vai para o próximo chat TALVEZ
+                self.interactor.exitChat()
+        #self.interactor.automatic_answer(self.queue)
         return
     
-    def MessageWatcher(self):
+    def queueMonitor(self):
         queue = []
-        while True:
-            for chat in self.session.chatList:
-                if chat.unreadCounter > 0:
-                    self.mensagemAencaminhar = (f"{chat.title},  {chat.lastMessage}")
-                    queue.append(chat)
+
+        for chat in self.session.chatList:
+            if chat.unreadCounter >= 0:
+                
+                self.mensagemAencaminhar = (f"{chat.title},  {chat.lastMessage}")
+                
+                queue.append(chat)
+                
             self.queue = queue
-            if len(self.queue) > 0:
-                #print(self.queue)
-                return True, len(self.queue)
-            else: return False, 0
+            
+    def messageMonitor(self):
+        if len(self.queue) > 0:
+            print(self.queue, len(self.queue))            
+            return True    
+        else: return False
