@@ -140,7 +140,6 @@ class Interactor():
             return True
         else: return True
 
-
     #@@@@@@ All above is testing
     
     #TODO chamar o bot?

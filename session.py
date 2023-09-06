@@ -53,8 +53,8 @@ class Session(Elements, Pages):
             else:
                 continue
         
-        if not self.isProfilePage:
-            self.build_my_profile()
+        #if not self.isProfilePage:
+        self.build_my_profile()
         
         # [W] Depois de buildar o meu perfil, vou fazer a primeira checagem dos chats
         self.current_chat_list = self.chatList
@@ -75,22 +75,6 @@ class Session(Elements, Pages):
         self.my_profile = Profile(self, my_username, my_phone)
         return True
         
-    # [X] Ready
-    def check_new_chat(self):
-        queue = []
-        for chat in self.chatList:
-            if chat.unreadCounter > 0:
-                #print(chat.title, chat.lastMessage)
-                queue.append(chat)
-        self.queue = queue
-        if len(self.queue) > 0:
-            return True, len(self.queue)
-        else: return False, 0
-        
-    def answer_queue(self):
-        self.interactor.automatic_answer(self.queue)
-        input("saiu")
-        return
     
 
 class Profile():
@@ -122,19 +106,17 @@ class Profile():
             self.interactor.sendMessage("Hello, world!")
             
             #verificar se a mensagem esta na conversa
-            
-            
+
             self.interactor.returnMain()
             return True
     
     def pinMyChat(self):
-        if self.webElement != None: 
-            try:
-                self.interactor.pinChat(self.webElement)
-            except: pass
-            return True
-        else:
-            input("vai tratar exceção burro!")
+        try:
+            self.interactor.pinChat(self.webElement)
+        except: pass
+        
+        return True
+            #input("vai tratar exceção burro!")
         
             #Achar meu chat na lista de chats
 

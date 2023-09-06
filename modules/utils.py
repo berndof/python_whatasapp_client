@@ -27,10 +27,10 @@ def generate_qr(qr_data:str='', qr_path:str='data//session//', qr_filename:str='
     return qr_data
 
 # [W] TODO add y_end (height of div "Mensagens") 
-def organize_search_results(list_resultElements, y_start):
+def organize_search_results(list_resultElements, y_start, y_end):
     result_list = []      
     for element in list_resultElements:
-        if  y_start < int(element.location['y']):
+        if  y_start < int(element.location['y']) and y_end > int(element.location['y']):
             
             result_title = break_chat_text(element.text)
             
