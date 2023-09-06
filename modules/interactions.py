@@ -153,19 +153,15 @@ class Interactor():
                 sleep(1)
                 self.closeChat()
             else: input("não entrou")
-                
-                
-
-    
-    
+            
+    ################################################
+            
     # [x] Ready for now, adicionar confirmação de que entrou no chat certo antes de retornar
     def enterChat(self, chat:Chat):
         try:
             chat.element.click()
             return True
         except: return False
-        
-        
     ############
 
     def enterChat_on_ChatList(self, chat_title:str):
