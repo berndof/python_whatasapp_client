@@ -87,14 +87,15 @@ class Elements():
         else:
         #set start y position
             for element in list_resultElements:
-                if element.text == "CONVERSAS":
+                if element.text == "CONTATOS" or element.text == "CONVERSAS":
                     y_start = element.location['y']
                 if element.text == "MENSAGENS": #Y_end
+                    y_end = element.location['y']
                     pass
                     #y_end = element.location['y']
                 #!TODO set y end position for search in messages or limit the search results only to contacts
         
-        search_results = self.utils.organize_search_results(list_resultElements, y_start)
+        search_results = self.utils.organize_search_results(list_resultElements, y_start, y_end)
         return search_results  
 
     # [X] Ready
@@ -106,19 +107,19 @@ class Elements():
     # [W] TODO
     @property
     def chatList(self) -> List[Chat]:
+        
+        
         current_chat_list = []
         
         chat_tab = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, '[aria-label="Lista de conversas"]')))
 
         for chat_element in chat_tab.find_elements(By. XPATH, './*'):
-            
+            #if input == "":
             if chat_element.text.split('\n')[0] == "Ditec": #TODO SABE QUE ISSO TA ERRA NÉ?
                 #meu chat
                 #return self.myChat
-                
-                #chat_title, x, time_lastMessage, lastMessage  =     #chat_element.text.split('\n')
-                #chat_object = Chat(chat_title, time_lastMessage, #lastMessage, "0", chat_element)
-                pass
+                chat_title, x, time_lastMessage, lastMessage  = chat_element.text.split('\n')
+                chat_object = Chat(chat_title, time_lastMessage, lastMessage, "0", chat_element)
                 
             else:
                 if len(chat_element.text.split('\n')) == 3:
@@ -130,6 +131,6 @@ class Elements():
                     chat_object = Chat(chat_title, time_lastMessage, lastMessage, unreadCounter, chat_element)
             
             
-                current_chat_list.append(chat_object)
+            current_chat_list.append(chat_object)
         
         return current_chat_list
