@@ -1,29 +1,53 @@
+#### IMPORTS
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from typing import Tuple, Union, List
+from typing import Tuple, Union, List, Literal
 from selenium.webdriver.remote.webelement import WebElement
 
 from modules import utils
 
-
 from time import sleep
 
-from typing import List
+##################################################################################################
+
+
+## Queue 0 fila esperando fila (esperando setor especifico)
+##     - queue_state 0 (enviar mensagem de boas vindas), primeiro contato first_contact
+##     - queue_state 1 (mensagem de boas vindas enviada), aguardando resposta waiting
+##     - queue_state 2 (mensagem de boas vindas respondida), encaminhando para a fila especifica redirecting
+##     - queue state 3 (mensagem de boas vindas respondida errado), reenviar mensagem queue_state = 1 resend_greetings
+
+
 
 class Chat():
-    def __init__(self, title, time_lastMessage, lastMessage, unreadCounter,  element):
+    def __init__(self, title, time_lastMessage, lastMessage, unreadCounter,  element, queue = 0, queue_state = 0):
+        
         self.title = title
-        
         self.time_lastMessage = time_lastMessage
-        #TODO maybe sla
-        
         self.lastMessage = lastMessage
         self.unreadCounter = int(unreadCounter)
         self.element = element
+        self.queue = queue
+        self.queue_state = queue_state
         
-    # [X] Ready
+######## QUEUE #######
+
+    # [Ready]
+    @property
+    def waitingQueue(self) -> bool:
+        if self.queue == 0:
+            return True
+        else: return False
+        
+    # [Ready]
+    def addQueue(self, queue:int) -> Literal[True]:
+        self.queue = queue
+        return True
+
+######## PROPERTIES ########
+    # [Ready]
     @property
     def isPinned(self) -> bool:
         try:
@@ -31,26 +55,32 @@ class Chat():
             return True 
         except: return False
 
+
 class Elements():
     def __init__(self,driver):
+        
         self.driver = driver 
         self.utils = utils
     
-    # [X] Ready
+####### QRCODE #######
+    
+    # [Ready]
     @property
     def qr_data(self) -> str:
         try:
             return self.driver.find_element(By.XPATH, '/html/body/div[1]/div/div/div[3]/div[1]/div/div/div[2]/div').get_attribute('data-ref')
         except: return ""
         
-    # [X] Ready
+####### PROFILE #######
+        
+    # [Ready]
     @property    
     def profile_div(self) -> Union[WebElement, None]:
         try: 
             return self.driver.find_element(By.XPATH, '/html/body/div[1]/div/div/div[4]/header/div[1]/div')
         except: return None
         
-    # [X] Ready    
+    # [Ready]    
     @property
     def username(self) -> Union[str, None]:   
         try:
@@ -60,7 +90,7 @@ class Elements():
         except Exception as e: return None
             #!TODO tratar exceção
 
-    # [X] Ready
+    # [Ready]
     @property
     def phone(self) -> Union[str, None]:
         try:
@@ -69,12 +99,14 @@ class Elements():
             return content
         except Exception as e: return None
         
-    # [X] Ready
+####### SEARCH #######
+    
+    # [Ready]
     @property
     def search_box(self) -> WebElement:
         return self.driver.find_element(By.XPATH, '//*[@title="Caixa de texto de pesquisa"]')
     
-    # [X] Ready
+    # [Ready]
     @property    
     def SearchResults(self) -> List[Tuple[str, WebElement]]:
 
@@ -98,13 +130,15 @@ class Elements():
         search_results = self.utils.organize_search_results(list_resultElements, y_start, y_end)
         return search_results  
 
-    # [X] Ready
+    # [Ready]
     @property
     def message_box(self):
         try: return WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div[5]/div/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]')))
         except: return None
 
-    # [W] TODO
+######## CHATS #######
+
+    # [Not Ready] TODO
     @property
     def chatList(self) -> List[Chat]:
         

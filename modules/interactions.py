@@ -1,9 +1,9 @@
-from modules.elements import Elements, Chat
-from modules.pages import Pages
-
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+
+from modules.elements import Elements, Chat
+from modules.pages import Pages
 
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
@@ -20,8 +20,8 @@ class Interactor():
         self.action = ActionChains(self.driver)
         
         
-    ### PROFILE ########################################
-    # [X] Ready
+######## PROFILE ########
+    # [Ready]
     def openProfile(self) -> bool:
         sleep(0.5)
         if self.elements.profile_div != None:
@@ -30,7 +30,7 @@ class Interactor():
         else:
             return False
     
-    # [X] Ready
+    # [Ready]
     def closeProfile(self):
         while self.pages.isProfilePage:
             try:
@@ -40,7 +40,7 @@ class Interactor():
             except: pass
         return True
     
-    # [\] Ready for now, extrair mais dados perfil
+    # [Ready]
     def extractProfileData(self):
         if self.pages.isProfilePage:
             
@@ -49,9 +49,8 @@ class Interactor():
             
             return my_username, my_phone
         else: return None
-    ####################################################
-    
-    ### Pages Navigation ###############################
+
+######## NAVIGATION ########
     # [X] Ready
     def returnMain(self):
         while not self.pages.isMainPage:
@@ -62,15 +61,20 @@ class Interactor():
             except: pass
         return True
     
+    # [X] Ready
     def closeChat(self):
         sleep(0.1)
         self.action.send_keys(Keys.ESCAPE)
         self.action.perform()
         
-    ####################################################    
-        
-        
-    ### Search ######################################### 
+    # [X] Ready
+    def openChat(self, chat):
+        try:
+            chat.click()
+            return True
+        except: return False
+
+######## SEARCH ######## TODO
     
     # [X] Ready 
     def searchByTitle(self, chat_title:str):
@@ -102,15 +106,13 @@ class Interactor():
                 return chat
             else: return None
 
-    ####################################################    
-    
-    ### Chat Actions ###################################
+######## CHATS ######## TODO
 
     # [W] TODO
     def sendMessage(self, message:str): #add parametro chat
         #Checar se estou no chat certo
         
-        sleep(0.5)
+        sleep(0.2)
         input_field = self.elements.message_box
 
         input_field.click()
@@ -140,6 +142,8 @@ class Interactor():
             return True
         else: return True
 
+
+########################################
     #@@@@@@ All above is testing
     
     #TODO chamar o bot?

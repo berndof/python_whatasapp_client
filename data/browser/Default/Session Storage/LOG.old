@@ -1,3 +1,6 @@
-2023/09/06-11:07:01.986 3 Reusing MANIFEST /home/berndof/Workspace/Zapap/data/browser/Default/Session Storage/MANIFEST-000001
-2023/09/06-11:07:01.988 3 Recovering log #3
-2023/09/06-11:07:01.990 3 Reusing old log /home/berndof/Workspace/Zapap/data/browser/Default/Session Storage/000003.log 
+2023/09/08-11:55:04.442 3 Reusing MANIFEST /home/berndof/Workspace/Zapap/data/browser/Default/Session Storage/MANIFEST-000001
+2023/09/08-11:55:04.443 3 Recovering log #3
+2023/09/08-11:55:04.445 3 Reusing old log /home/berndof/Workspace/Zapap/data/browser/Default/Session Storage/000003.log 
+2023/09/08-11:55:05.362 3 Level-0 table #5: started
+2023/09/08-11:55:05.420 3 Level-0 table #5: 14762 bytes OK
+2023/09/08-11:55:05.487 3 Delete type=0 #3

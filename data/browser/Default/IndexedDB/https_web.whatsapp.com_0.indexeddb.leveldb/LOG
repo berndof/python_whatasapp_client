@@ -1,3 +1,14 @@
-2023/09/06-11:10:11.122 5c76 Reusing MANIFEST /home/berndof/Workspace/Zapap/data/browser/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2023/09/06-11:10:11.122 5c76 Recovering log #73
-2023/09/06-11:10:11.164 5c76 Reusing old log /home/berndof/Workspace/Zapap/data/browser/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/000073.log 
+2023/09/08-13:20:56.825 81f3 Reusing MANIFEST /home/berndof/Workspace/Zapap/data/browser/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2023/09/08-13:20:56.826 81f3 Recovering log #78
+2023/09/08-13:20:56.917 81f3 Reusing old log /home/berndof/Workspace/Zapap/data/browser/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/000078.log 
+2023/09/08-13:26:57.465 81f3 Level-0 table #84: started
+2023/09/08-13:26:57.784 81f3 Level-0 table #84: 1210951 bytes OK
+2023/09/08-13:26:57.876 81f3 Delete type=0 #78
+2023/09/08-13:55:29.720 81f3 Compacting 1@1 + 2@2 files
+2023/09/08-13:55:29.948 81f3 Generated table #85@1: 80935 keys, 2264539 bytes
+2023/09/08-13:55:30.025 81f3 Generated table #86@1: 8147 keys, 376372 bytes
+2023/09/08-13:55:30.025 81f3 Compacted 1@1 + 2@2 files => 2640911 bytes
+2023/09/08-13:55:30.103 81f3 compacted to: files[ 0 0 2 0 0 0 0 ]
+2023/09/08-13:55:30.103 81f3 Delete type=2 #80
+2023/09/08-13:55:30.104 81f3 Delete type=2 #81
+2023/09/08-13:55:30.104 81f3 Delete type=2 #84
