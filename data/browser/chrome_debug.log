@@ -50,3 +50,4 @@
 [33296:33296:0908/132101.704887:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
 [33296:33296:0908/132103.035588:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
 [33296:33296:0908/132103.291659:WARNING:angle_platform_impl.cc(49)] ProgramGL.cpp:989 (checkLinkStatus): Program link or binary loading failed with no info log.
+[33243:33243:0908/153112.894565:WARNING:pref_notifier_impl.cc(41)] Pref observer for media_router.cast_allow_all_ips found at shutdown.
