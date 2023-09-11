@@ -1,3 +1,4 @@
+import queue
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
@@ -26,12 +27,11 @@ class Session(Elements, Pages):
         #self.elements = Elements(self.driver)
         #self.pages = Pages(self.driver)
         
-    
-        
         self.actual_qr_data:str = ''
         self.current_chat_list = []
         
         self.my_profile:Profile
+        self.chat_list = ChatList(self)
     
         
     def start(self) -> bool:
@@ -75,7 +75,23 @@ class Session(Elements, Pages):
         self.my_profile = Profile(self, my_username, my_phone)
         return True
         
-    
+class ChatList():
+    def __init__(self, session):
+        
+        self.session = session
+        
+        self.chat_list = []
+        
+    @property
+    def actual_list(self):
+        
+        for element in self.session.chats:
+            input(element.text.slipt("\n")[0])
+        
+        pass
+        
+
+        
 
 class Profile():
     def __init__(self, session, username, phone,):

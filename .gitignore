@@ -1,0 +1,9 @@
+# Ignorar a pasta .venv
+.venv/
+
+# Ignorar a pasta data
+data/
+
+# Ignorar a pasta __pycache__
+__pycache__/
+__pycache__/session.cpython-311.pyc

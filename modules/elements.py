@@ -22,6 +22,12 @@ from time import sleep
 
 
 class Chat():
+    def __eq__(self, outro_chat):
+        return self.title == outro_chat.title
+    
+    def __gt__(self, outro_chat):
+        return self.unreadCounter > outro_chat.unreadCounter
+    
     def __init__(self, title, time_lastMessage, lastMessage, unreadCounter,  element, queue = 0, queue_state = 0):
         
         self.title = title
@@ -140,22 +146,29 @@ class Elements():
 
     # [Not Ready] TODO
     @property
-    def chatList(self) -> List[Chat]:
+    def chats(self) -> List[Chat]:
         
         
         current_chat_list = []
+        element_list = []
         
         chat_tab = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, '[aria-label="Lista de conversas"]')))
 
         for chat_element in chat_tab.find_elements(By. XPATH, './*'):
             #if input == "":
-            if chat_element.text.split('\n')[0] == "Ditec": #TODO SABE QUE ISSO TA ERRA NÉ?
+            
+            element_list.append(chat_element)
+            
+        return element_list
+        
+        """if chat_element.text.split('\n')[0] == "Ditec": #TODO SABE QUE ISSO TA ERRA NÉ?
                 #meu chat
                 #return self.myChat
                 chat_title, x, time_lastMessage, lastMessage  = chat_element.text.split('\n')
                 chat_object = Chat(chat_title, time_lastMessage, lastMessage, "0", chat_element)
                 
             else:
+                
                 if len(chat_element.text.split('\n')) == 3:
                     chat_title, time_lastMessage, lastMessage = chat_element.text.split('\n')
                     chat_object = Chat(chat_title, time_lastMessage, lastMessage, 0, chat_element)
@@ -167,4 +180,5 @@ class Elements():
             
             current_chat_list.append(chat_object)
         
-        return current_chat_list
+        return current_chat_list"""
+    
