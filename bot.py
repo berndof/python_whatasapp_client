@@ -11,7 +11,7 @@ class Gary():
         self.interactor = session.interactor
         
         self.queue:List = []
-         # self.queue_zero = []
+        # self.queue_zero = []
         
         self.newQueueMessage = "Você entrou em contato com o Serviço de Atendimento ao Cliente Ditec\nselecione uma fila:\n1 - Manutenção\n2 - Vendas"
 

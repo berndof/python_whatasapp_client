@@ -25,9 +25,6 @@ class Chat():
     def __eq__(self, outro_chat):
         return self.title == outro_chat.title
     
-    def __gt__(self, outro_chat):
-        return self.unreadCounter > outro_chat.unreadCounter
-    
     def __init__(self, title, time_lastMessage, lastMessage, unreadCounter,  element, queue = 0, queue_state = 0):
         
         self.title = title
@@ -37,6 +34,7 @@ class Chat():
         self.element = element
         self.queue = queue
         self.queue_state = queue_state
+        self.messages = []
         
 ######## QUEUE #######
 
@@ -67,6 +65,8 @@ class Elements():
         
         self.driver = driver 
         self.utils = utils
+        
+        self.current_chats = []
     
 ####### QRCODE #######
     
@@ -149,18 +149,45 @@ class Elements():
     def chats(self) -> List[Chat]:
         
         
-        current_chat_list = []
-        element_list = []
-        
         chat_tab = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, '[aria-label="Lista de conversas"]')))
 
         for chat_element in chat_tab.find_elements(By. XPATH, './*'):
-            #if input == "":
             
-            element_list.append(chat_element)
+            #chat_data = chat_element.text.split('\n')
+            #chat_title, time_lastMessage, lastMessage, unreadCounter = chat_data
             
-        return element_list
-        
+            if chat_element.text.split('\n')[0] == "Ditec": #TODO SABE QUE ISSO TA ERRA NÉ?
+                chat_title, x, time_lastMessage, lastMessage  = chat_element.text.split('\n')
+                unreadCounter=0
+                chat_object = Chat(chat_title, time_lastMessage, lastMessage, unreadCounter, chat_element)
+                
+            else:
+                if len(chat_element.text.split('\n')) == 3:
+                    
+                    unreadCounter=0
+                    chat_title, time_lastMessage, lastMessage = chat_element.text.split('\n')
+                    chat_object = Chat(chat_title, time_lastMessage, lastMessage, unreadCounter, chat_element)
+                
+                else: 
+                    chat_title, time_lastMessage, lastMessage, unreadCounter = chat_element.text.split('\n')
+                    chat_object = Chat(chat_title, time_lastMessage, lastMessage, unreadCounter, chat_element)
+            
+            
+            
+            
+            
+            existing_chat = next((chat for chat in self.current_chats if chat.title == chat_title), None)
+            if existing_chat:
+                existing_chat.time_last_message = time_lastMessage
+                existing_chat.last_message = lastMessage
+                existing_chat.unread_counter = unreadCounter
+            else:
+                chat_object = Chat(chat_title, time_lastMessage, lastMessage, unreadCounter, chat_element)
+                self.current_chats.append(chat_object)
+
+        return self.current_chats
+            
+      
         """if chat_element.text.split('\n')[0] == "Ditec": #TODO SABE QUE ISSO TA ERRA NÉ?
                 #meu chat
                 #return self.myChat
