@@ -2,7 +2,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from modules.elements import Elements, Chat
+from modules.elements import Elements
 from modules.pages import Pages
 
 from selenium.webdriver.common.keys import Keys
@@ -99,13 +99,6 @@ class Interactor():
                 return True
             else: return False
 
-    # [X] Ready
-    def searchByTitle_on_chatList(self, chat_title:str) -> Union[Chat, None]:
-        for chat in self.elements.chatList:
-            if chat.title == chat_title:
-                return chat
-            else: return None
-
 ######## CHATS ######## TODO
 
     # [W] TODO
@@ -129,7 +122,7 @@ class Interactor():
             input_field.send_keys(Keys.RETURN)
 
     # [X] Ready
-    def pinChat(self, chat:Chat) -> bool:
+    def pinChat(self, chat) -> bool:
         if not chat.isPinned:
             self.action.context_click(chat.element).perform()
             sleep(1)
@@ -141,44 +134,3 @@ class Interactor():
             pin_btn.click()
             return True
         else: return True
-
-
-########################################
-    #@@@@@@ All above is testing
-    
-    #TODO chamar o bot?
-    def automatic_answer(self, queue):
-        message = "Aguarde o técnico"
-        for chat in queue:
-            if self.enterChat(chat):
-                sleep(1)
-                self.sendMessage(message)
-                sleep(1)
-                self.closeChat()
-            else: input("não entrou")
-            
-    ################################################
-            
-    # [x] Ready for now, adicionar confirmação de que entrou no chat certo antes de retornar
-    def enterChat(self, chat:Chat):
-        try:
-            chat.element.click()
-            return True
-        except: return False
-    ############
-
-    def enterChat_on_ChatList(self, chat_title:str):
-        exists, chat = self.find_on_ChatList(chat_title)
-        if exists:
-            chat.element.click()
-            return True
-        else: return False
-    
-    def pinChat_on_ChatList(self, chat_title:str):
-        exists, chat = self.find_on_ChatList(chat_title)
-        if exists and chat.element.is_displayed() and not self.chat.isPinned:
-            #pin chat
-            return True
-        else: return False
-    
-    
