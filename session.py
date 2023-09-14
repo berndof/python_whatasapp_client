@@ -13,20 +13,16 @@ from time import sleep
 
 class Session(Elements, Pages):
     def __init__(self, driver):
-        #super().__init__(driver)
+
+        self.driver = driver
+        self.interactor = Interactor(self.driver)
+
         Elements.__init__(self, driver)
         Pages.__init__(self, driver)
+        Chats.__init__(self, self.driver, self.interactor)
         
-        self.driver = driver
-        
-        #self.bot = Bot
-        
-        self.interactor = Interactor(self.driver)    
-        #self.elements = Elements(self.driver)
-        #self.pages = Pages(self.driver)
-        
+                
         self.actual_qr_data:str = ''
-        self.current_chat_list = []
         
         self.my_profile:Profile
     
@@ -53,17 +49,16 @@ class Session(Elements, Pages):
         #TODO if not self.isProfilePage:
         self.build_my_profile()
         
-        # [X] Depois de buildar o meu perfil, vou fazer a primeira checagem dos chats
-        self.current_chat_list = self.chatList
-        
         return True
-                
+
+######## QRCODE ########
     # [X] Ready
     def _update_qr_data(self) -> str:
         if self.qr_data != self.actual_qr_data and self.actual_qr_data != '':
             return generate_qr(qr_data=self.qr_data)
         return self.qr_data
                 
+######## MY PROFILE ########
     # [X] Ready
     def _build_my_profile(self):
         if self.interactor.profile.openProfile():
@@ -71,12 +66,7 @@ class Session(Elements, Pages):
             self.interactor.profile.closeProfile()
         self.my_profile = Profile(self, my_username, my_phone)
         return True
-    
-    def _set_technicians(self):
-        
-        pass
-        
-    
+
 
 class Profile():
     def __init__(self, session, username, phone,):
@@ -87,17 +77,17 @@ class Profile():
         self.username:str = username
         self.phone:str = phone
         
+        #self.my_chat TODO
+        
         self.hello_world()
         self.pinMyChat()
         
-    #### Properties ###############################
+#### Properties ###############################
     @property        
     def webElement(self):
         return self.interactor.searchByTitle_on_chatList(self.username)
         
-    ###############################################
-    
-    #### Actions ##################################
+#### Actions ##################################
     
     # [W] TODO
     def hello_world(self):
