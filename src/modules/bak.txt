@@ -1,0 +1,6 @@
+    # [X] Ready
+    def searchByTitle_on_chatList(self, chat_title:str) -> Union[Chat, None]:
+        for chat in self.elements.chatList:
+            if chat.title == chat_title:
+                return chat
+            else: return None

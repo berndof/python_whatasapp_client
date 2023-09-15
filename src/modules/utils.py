@@ -12,7 +12,7 @@ def check_path(path:str):
 # [X] Ready
 def generate_qr(qr_data:str='', qr_path:str='data//session//', qr_filename:str='qr-code.png'):
     
-    qr = qrcode.QRCode()
+    qr = qrcode.QRCode() # type: ignore
     
     qr.add_data(qr_data)
     qr.make(fit=True)
@@ -30,6 +30,11 @@ def generate_qr(qr_data:str='', qr_path:str='data//session//', qr_filename:str='
 def organize_search_results(list_resultElements, y_start, y_end):
     result_list = []      
     for element in list_resultElements:
+        if y_start < int(element.location['y']) and y_end == 0:
+            result_title = break_chat_text(element.text)
+            
+            result_list.append((result_title, element))
+        
         if  y_start < int(element.location['y']) and y_end > int(element.location['y']):
             
             result_title = break_chat_text(element.text)

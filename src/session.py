@@ -4,23 +4,25 @@ from selenium.webdriver.chrome.options import Options
 from modules.utils import generate_qr
 
 from modules.pages import Pages
-from modules.elements import Elements, Chat
+from modules.elements import Elements
 from modules.interactions import Interactor
+from modules.chats import Chats, Chat
 
 from typing import Tuple, List, Union
 
 from time import sleep
 
-class Session(Elements, Pages):
+class Session (Pages):
     def __init__(self, driver):
 
         self.driver = driver
-        self.interactor = Interactor(self.driver)
-
-        Elements.__init__(self, driver)
-        Pages.__init__(self, driver)
-        Chats.__init__(self, self.driver, self.interactor)
+        self.elements = Elements(self.driver)
+        self.interactor = Interactor(self)
+        self.chats = Chats(self.driver, self.interactor)
+        #Elements.__init__(self, self.driver)
         
+        Pages.__init__(self, self.driver)
+        #Chats.__init__(self, self.driver, self.interactor)
                 
         self.actual_qr_data:str = ''
         
@@ -33,9 +35,7 @@ class Session(Elements, Pages):
         Returns:
             bool: sessão iniciada com sucesso >>> True
         """
-        
         is_auth = False
-        
         while not is_auth:
             if self.isMainPage:
                 is_auth = True
@@ -47,26 +47,27 @@ class Session(Elements, Pages):
                 continue
         
         #TODO if not self.isProfilePage:
-        self.build_my_profile()
+        self._build_my_profile()
         
         return True
 
 ######## QRCODE ########
     # [X] Ready
     def _update_qr_data(self) -> str:
-        if self.qr_data != self.actual_qr_data and self.actual_qr_data != '':
-            return generate_qr(qr_data=self.qr_data)
-        return self.qr_data
+        if self.elements.qr_data != self.actual_qr_data and self.actual_qr_data != '':
+            return generate_qr(qr_data=self.elements.qr_data)
+        return self.elements.qr_data
                 
 ######## MY PROFILE ########
     # [X] Ready
     def _build_my_profile(self):
-        if self.interactor.profile.openProfile():
-            my_username, my_phone = self.interactor.profile.extractProfileData()
-            self.interactor.profile.closeProfile()
-        self.my_profile = Profile(self, my_username, my_phone)
-        return True
-
+        #sleep(1)
+        if self.interactor.openProfile():
+            my_username, my_phone = self.interactor.extractProfileData()        
+            self.interactor.closeProfile()
+            self.my_profile = Profile(self, my_username, my_phone)
+            return True
+        else: input("aconteceu algo estranho, vá olhar e resolver")
 
 class Profile():
     def __init__(self, session, username, phone,):
@@ -85,8 +86,10 @@ class Profile():
 #### Properties ###############################
     @property        
     def webElement(self):
-        return self.interactor.searchByTitle_on_chatList(self.username)
-        
+        if self.username in self.session.chatList:
+            #indice = self.session.chatList.index(self.username)
+            return self.session.chatList[self.session.chatList.index(self.username)]
+            
 #### Actions ##################################
     
     # [W] TODO

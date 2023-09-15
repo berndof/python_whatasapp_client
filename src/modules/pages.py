@@ -3,7 +3,9 @@ from modules.locators import Locator
 
 class Pages():
     def __init__(self, driver):
+        #self.driver = session.driver 
         self.driver = driver
+        
         self.locator = Locator()
     
     @property

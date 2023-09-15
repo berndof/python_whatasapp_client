@@ -1,19 +1,22 @@
 from selenium.webdriver.chrome.options import Options
 from selenium import webdriver
 
-import threading
+#import threading
 
 from time import sleep
 
+#from modules.chats import Chat
+
 from session import Session
 from bot import Gary
+
 
 
 class App(Session):
     def __init__(self, driver):
         super().__init__(driver)
         
-        self.last_chatList_Cheked = []
+        #self.last_chatList_Cheked = []
         #self.gary = Gary(self)
         
         if self.start():
