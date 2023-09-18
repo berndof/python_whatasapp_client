@@ -18,11 +18,12 @@ class Gary():
         while True:
             self.chats._update_chatList
             
-            self.answerQueues(self.chats.chatList)
+            #self.answerQueues(self.chats.chatList)
             #if len(self.chats.firstContact_queue) > 0:
             input(f"{self.chats.chatList}")
             
             pass
+        return
     
     def answerQueues(self, chat_list):
         ##AQUI 
